@@ -53,7 +53,7 @@ for record in "${records[@]}"; do
 
   # get zone name
   if [ "$record_type" == "SOA" ]; then
-    zone_name="${parts[0]}"
+    zone_name=$(echo "${parts[0]}" | sed 's/\.$//')
     zone_resource="$(echo "${parts[0]}zone" | sed 's/\./-/g' | sed 's/\*//g' | sed 's/^\-//')"
   fi
 
